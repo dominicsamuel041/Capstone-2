@@ -20,7 +20,8 @@
             background: linear-gradient(135deg, #0f0c29 0%, #1a1a4e 40%, #24243e 100%);
             min-height: 100vh;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
         .auth-bg::before {
             content: '';
