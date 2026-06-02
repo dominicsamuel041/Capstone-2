@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -45,5 +46,39 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Relationship with Role
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    // Role checking helpers
+    public function isAdmin(): bool
+    {
+        return $this->role && $this->role->name === 'Admin';
+    }
+
+    public function isKalab(): bool
+    {
+        return $this->role && $this->role->name === 'Kalab';
+    }
+
+    public function isKaprodi(): bool
+    {
+        return $this->role && $this->role->name === 'Kaprodi';
+    }
+
+    public function isAdminStaf(): bool
+    {
+        return $this->role && $this->role->name === 'Admin_Staf';
+    }
+
+    public function isLabStaf(): bool
+    {
+        return $this->role && $this->role->name === 'Lab_Staf';
     }
 }
